@@ -4,7 +4,7 @@ import { TextField } from "@mui/material";
 export const Input = ({
   type = "text",
   name,
-  lable,
+  label,
   onChange,
   error,
   value,
@@ -13,7 +13,7 @@ export const Input = ({
     <TextField
       type={type}
       name={name}
-      lable={lable}
+      label={label}
       onChange={onChange}
       value={value}
       error={Boolean(error)}
