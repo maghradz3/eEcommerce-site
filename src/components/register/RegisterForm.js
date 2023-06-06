@@ -3,17 +3,26 @@ import { FormContainer, Input } from "../atoms";
 import { useForm } from "../../hooks";
 import { generateRegisterFormValues } from "./generateRegisterFormValues";
 import { Button } from "../atoms";
+import { useDispatch } from "react-redux";
+import { authenticatedUser } from "../../redux";
 
 export const RegisterForm = () => {
   const { formValues: registerFormValues, onFormChange } = useForm(
     generateRegisterFormValues()
   );
+
+  const dispatch = useDispatch();
   const onSubmit = () => {
     const firstName = registerFormValues.firstName.value;
     const lastName = registerFormValues.lastName.value;
     const email = registerFormValues.email.value;
     const password = registerFormValues.password.value;
-    console.log(firstName, lastName, email, password);
+    dispatch(
+      authenticatedUser({
+        formValues: { firstName, lastName, email, password },
+        isLogin: false,
+      })
+    );
   };
   // console.log(registerFormValues);
   return (
