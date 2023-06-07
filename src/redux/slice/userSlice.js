@@ -3,7 +3,7 @@ import { axiosInstance } from "../../helper";
 
 export const authenticatedUser = createAsyncThunk(
   "user/authenticatedUser",
-  async ({ formValues, isLogin }) => {
+  async ({ formValues, isLogin }, { rejectWithValue }) => {
     try {
       const route = `/users/${isLogin ? "login" : "register"}`;
       const { data } = await axiosInstance.post(route, formValues);
@@ -11,7 +11,9 @@ export const authenticatedUser = createAsyncThunk(
       localStorage.setItem("refreshToken", data.refreshToken);
       console.log(data.user);
       return data;
-    } catch (error) {}
+    } catch (error) {
+      return rejectWithValue(error?.response?.data?.message);
+    }
   }
 );
 
@@ -30,6 +32,9 @@ const userSlice = createSlice({
     });
     builder.addCase(authenticatedUser.fulfilled, (state, action) => {
       state.userInfo = action.payload.user;
+    });
+    builder.addCase(authenticatedUser.rejected, (state, action) => {
+      state.loading = false;
     });
   },
 });

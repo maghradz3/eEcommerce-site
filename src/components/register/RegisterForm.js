@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FormContainer, Input } from "../atoms";
-import { useForm } from "../../hooks";
+import { Alert, FormContainer, Input } from "../atoms";
+import { useAlert, useForm } from "../../hooks";
 import { generateRegisterFormValues } from "./generateRegisterFormValues";
 import { Button } from "../atoms";
 import { useDispatch } from "react-redux";
@@ -13,6 +13,7 @@ export const RegisterForm = () => {
     onFormChange,
     checkButtonDisabled,
   } = useForm(generateRegisterFormValues());
+  const { showAlert, alertState, handleClose } = useAlert();
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ export const RegisterForm = () => {
       .unwrap()
       .then(() => {
         navigate("/");
+      })
+      .catch((error) => {
+        showAlert("error", error);
       });
   };
 
@@ -70,6 +74,7 @@ export const RegisterForm = () => {
       <Button onClick={onSubmit} disabled={isButtonDisabled}>
         register
       </Button>
+      <Alert {...alertState} handleClose={handleClose} />
     </FormContainer>
   );
 };

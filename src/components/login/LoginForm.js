@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { Button, FormContainer, Input } from "../atoms";
+import React, { useEffect, useState } from "react";
+import { Alert, Button, FormContainer, Input } from "../atoms";
 import { generateLoginFormValues } from "./generateLoginFormValues";
-import { useForm } from "../../hooks";
+import { useAlert, useForm } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { authenticatedUser } from "../../redux";
 import { useNavigate } from "react-router";
@@ -13,6 +13,7 @@ export const LoginForm = () => {
     checkButtonDisabled,
   } = useForm(generateLoginFormValues());
 
+  const { showAlert, alertState, handleClose } = useAlert();
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ export const LoginForm = () => {
       .unwrap()
       .then(() => {
         navigate("/");
+      })
+      .catch((error) => {
+        showAlert("error", error);
       });
     console.log(email, password);
   };
@@ -53,6 +57,7 @@ export const LoginForm = () => {
         onChange={onLoginFormChange}
       />
       <Button onClick={onLogin}>login</Button>
+      <Alert {...alertState} handleClose={handleClose} />
     </FormContainer>
   );
 };
