@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FormContainer, Input } from "../atoms";
 import { useForm } from "../../hooks";
 import { generateRegisterFormValues } from "./generateRegisterFormValues";
 import { Button } from "../atoms";
 import { useDispatch } from "react-redux";
 import { authenticatedUser } from "../../redux";
+import { useNavigate } from "react-router";
 
 export const RegisterForm = () => {
-  const { formValues: registerFormValues, onFormChange } = useForm(
-    generateRegisterFormValues()
-  );
-
+  const {
+    formValues: registerFormValues,
+    onFormChange,
+    checkButtonDisabled,
+  } = useForm(generateRegisterFormValues());
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const onSubmit = () => {
     const firstName = registerFormValues.firstName.value;
@@ -22,8 +26,16 @@ export const RegisterForm = () => {
         formValues: { firstName, lastName, email, password },
         isLogin: false,
       })
-    );
+    )
+      .unwrap()
+      .then(() => {
+        navigate("/");
+      });
   };
+
+  useEffect(() => {
+    setIsButtonDisabled(checkButtonDisabled(registerFormValues));
+  }, [registerFormValues]);
   // console.log(registerFormValues);
   return (
     <FormContainer>
@@ -55,7 +67,9 @@ export const RegisterForm = () => {
         error={registerFormValues.password.error}
         onChange={onFormChange}
       />
-      <Button onClick={onSubmit}>register</Button>
+      <Button onClick={onSubmit} disabled={isButtonDisabled}>
+        register
+      </Button>
     </FormContainer>
   );
 };

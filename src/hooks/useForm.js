@@ -20,9 +20,20 @@ export const useForm = (defaultFormValues) => {
   const clearForm = (data) => {
     setFormValues(data);
   };
+
+  const checkButtonDisabled = (formValues) => {
+    for (let x in formValues) {
+      console.log("x", x);
+      if (formValues[x]?.error) {
+        return true;
+      }
+    }
+  };
+
   return {
     formValues,
     onFormChange,
     clearForm,
+    checkButtonDisabled,
   };
 };

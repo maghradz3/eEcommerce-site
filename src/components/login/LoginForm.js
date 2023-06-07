@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, FormContainer, Input } from "../atoms";
 import { generateLoginFormValues } from "./generateLoginFormValues";
 import { useForm } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { authenticatedUser } from "../../redux";
+import { useNavigate } from "react-router";
 
 export const LoginForm = () => {
-  const { formValues: loginFormValues, onFormChange: onLoginFormChange } =
-    useForm(generateLoginFormValues());
+  const {
+    formValues: loginFormValues,
+    onFormChange: onLoginFormChange,
+    checkButtonDisabled,
+  } = useForm(generateLoginFormValues());
+
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const onLogin = () => {
     const email = loginFormValues.email.value;
     const password = loginFormValues.password.value;
@@ -19,9 +25,17 @@ export const LoginForm = () => {
         formValues: { email, password },
         isLogin: true,
       })
-    );
+    )
+      .unwrap()
+      .then(() => {
+        navigate("/");
+      });
     console.log(email, password);
   };
+
+  useEffect(() => {
+    setIsButtonDisabled(checkButtonDisabled(loginFormValues));
+  }, [loginFormValues]);
   return (
     <FormContainer>
       <Input
