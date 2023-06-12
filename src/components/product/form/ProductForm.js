@@ -3,6 +3,9 @@ import FileBase64 from "react-file-base64";
 import { FormContainer, Input, Button } from "../../atoms";
 import { generateProductFormValues } from "./generateProductFormValue";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { saveProduct } from "../../../redux";
+
 
 export const ProductForm = () => {
   const [image, setImage] = useState("");
@@ -11,6 +14,7 @@ export const ProductForm = () => {
     onFormChange: onProductFormChange,
     checkButtonDisabled,
   } = useForm(generateProductFormValues);
+  const dispatch = useDispatch();
 
   const onSaveProduct = () => {
     const name = productFormValues.name.value;
@@ -18,6 +22,12 @@ export const ProductForm = () => {
     const category = productFormValues.category.value;
     const brand = productFormValues.brand.value;
     const price = productFormValues.price.value;
+    dispatch(
+      saveProduct({
+        product: { name, description, category, brand, price, image },
+      })
+    );
+
     console.log({ name, description, category, brand, price });
   };
   return (
