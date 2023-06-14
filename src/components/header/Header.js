@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { AppBar, Box, Toolbar } from "@mui/material";
 import { UserIcon } from "./UserIcon";
 import { Link } from "react-router-dom";
+import { ProductCategories } from "./ProductCategories";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgorundColor: "red",
@@ -26,6 +27,7 @@ export const Header = () => {
             <UserIcon />
           </Box>
         </StyledToolBar>
+        <ProductCategories />
       </StyledAppBar>
     </Box>
   );
