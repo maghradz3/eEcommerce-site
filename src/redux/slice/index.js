@@ -1,7 +1,9 @@
-export { userReducer, authenticatedUser } from "./userSlice";
+export { userReducer, authenticatedUser, logoutUser } from "./userSlice";
 
 export {
   productSlice,
   saveProduct,
   fetchHomePageProducts,
+  setSelectedProduct,
+  deleteProduct,
 } from "./ProductSlice";

@@ -1,11 +1,11 @@
-import { useForm } from "../../../hooks";
+import { useForm, useProduct } from "../../../hooks";
 import FileBase64 from "react-file-base64";
 import { FormContainer, Input, Button } from "../../atoms";
 import { generateProductFormValues } from "./generateProductFormValue";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { saveProduct } from "../../../redux";
-
+import { saveProduct, setSelectedProduct } from "../../../redux";
+import { useNavigate } from "react-router";
 
 export const ProductForm = () => {
   const [image, setImage] = useState("");
@@ -13,8 +13,18 @@ export const ProductForm = () => {
     formValues: productFormValues,
     onFormChange: onProductFormChange,
     checkButtonDisabled,
-  } = useForm(generateProductFormValues);
+    setFormValues: setProductFormValues,
+  } = useForm(generateProductFormValues());
+  const { selectedProduct } = useProduct();
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (selectedProduct)
+      setProductFormValues(generateProductFormValues(selectedProduct));
+    setImage(selectedProduct?.image);
+  }, [selectedProduct]);
 
   const onSaveProduct = () => {
     const name = productFormValues.name.value;
@@ -25,10 +35,13 @@ export const ProductForm = () => {
     dispatch(
       saveProduct({
         product: { name, description, category, brand, price, image },
+        productId: selectedProduct?._id,
       })
-    );
-
-    console.log({ name, description, category, brand, price });
+    )
+      .unwrap()
+      .then(() => {
+        navigate("/");
+      });
   };
   return (
     <FormContainer>

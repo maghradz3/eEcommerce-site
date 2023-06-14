@@ -34,5 +34,6 @@ export const useForm = (defaultFormValues) => {
     onFormChange,
     clearForm,
     checkButtonDisabled,
+    setFormValues,
   };
 };
