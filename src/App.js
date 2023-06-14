@@ -3,8 +3,16 @@ import { RouteComponent } from "./Routes";
 import { Link } from "react-router-dom";
 import { Header } from "./components/header";
 import { Grid } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchHomePageProducts } from "./redux";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchHomePageProducts());
+  }, []);
   return (
     <Grid sx={{ minHeight: "100vh" }}>
       <Grid item>
