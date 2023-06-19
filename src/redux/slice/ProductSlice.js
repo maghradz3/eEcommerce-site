@@ -40,18 +40,6 @@ export const fetchHomePageProducts = createAsyncThunk(
   }
 );
 
-export const fetchCategoryProducts = createAsyncThunk(
-  "product/fetchCategoryProducts",
-  async (url) => {
-    try {
-      const { data } = await axiosInstance.get(`/products/categories/${url}`);
-
-      console.log("categor products", data);
-      return data;
-    } catch (error) {}
-  }
-);
-
 export const fetchSingleProduct = createAsyncThunk(
   "product/fetchSingleProduct",
   async ({ id, category }, { rejectWithValue }) => {
@@ -84,7 +72,7 @@ export const productSlice = createSlice({
     homePageProducts: [],
     selectedProduct: null,
     categories: [],
-    categoryProducts: [],
+
     singleProduct: {},
   },
   reducers: {
@@ -103,13 +91,6 @@ export const productSlice = createSlice({
     builder.addCase(saveProduct.fulfilled, (state) => {
       state.selectedProduct = null;
     });
-
-    builder.addCase(fetchCategoryProducts.pending, pendingReducer);
-    builder.addCase(fetchCategoryProducts.fulfilled, (state, action) => {
-      state.loading = false;
-      state.categoryProducts = action.payload.products;
-    });
-    builder.addCase(fetchCategoryProducts.rejected, errorReducer);
 
     builder.addCase(fetchSingleProduct.pending, pendingReducer);
     builder.addCase(fetchSingleProduct.fulfilled, (state, action) => {
