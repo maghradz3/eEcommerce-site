@@ -10,10 +10,18 @@ export const useProduct = () => {
 
   const categories = useSelector((state) => state.product.categories);
 
+  const categoryProducts = useSelector(
+    (state) => state.product.categoryProducts
+  );
+
+  const singleProduct = useSelector((state) => state.product.singleProduct);
+
   return {
     homePageProducts,
     selectedProduct,
     isProductLoading,
     categories,
+    categoryProducts,
+    singleProduct,
   };
 };

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { useUser } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../redux";
-import { getUserInitials } from "../../helper";
+import { getUserInitials, isUserAdmin } from "../../helper";
 
 const StyledBox = styled(Box)(() => ({
   display: "flex",
@@ -54,6 +54,11 @@ export const UserIcon = () => {
                 Log Out
               </Button>
             </MenuItem>
+          )}
+          {isUserAdmin(userInfo) && (
+            <Button onClick={() => navigate("/product/new")}>
+              Add Product
+            </Button>
           )}
         </StyledBox>
       </Menu>

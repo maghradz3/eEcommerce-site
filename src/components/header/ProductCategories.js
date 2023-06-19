@@ -15,11 +15,10 @@ export const ProductCategories = () => {
       {categories.map((category) => {
         const { _id, name } = category;
         return (
-          <Link>
+          <Link to={`/products/categories/${name}`}>
             <StyledListItem key={_id}>
               <Text color="black">{name}</Text>
             </StyledListItem>
-            ;
           </Link>
         );
       })}

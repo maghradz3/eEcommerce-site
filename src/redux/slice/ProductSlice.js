@@ -32,13 +32,50 @@ export const fetchHomePageProducts = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axiosInstance.get("/products");
-      console.log(data);
+
       return data;
     } catch (error) {
       return rejectWithValue("Couldn't fetch products");
     }
   }
 );
+
+export const fetchCategoryProducts = createAsyncThunk(
+  "product/fetchCategoryProducts",
+  async (url) => {
+    try {
+      const { data } = await axiosInstance.get(`/products/categories/${url}`);
+
+      console.log("categor products", data);
+      return data;
+    } catch (error) {}
+  }
+);
+
+export const fetchSingleProduct = createAsyncThunk(
+  "product/fetchSingleProduct",
+  async ({ id, category }, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.get(
+        `/products/category/${category}/${id}`
+      );
+      console.log("single product", data);
+      return data;
+    } catch (error) {
+      return rejectWithValue("someting went wrong, coludnot fetch product");
+    }
+  }
+);
+
+const pendingReducer = (state) => {
+  state.loading = true;
+};
+
+const errorReducer = (state, action) => {
+  state.loading = false;
+  state.error = action.payload;
+};
+
 export const productSlice = createSlice({
   name: "porduct",
   initialState: {
@@ -47,6 +84,8 @@ export const productSlice = createSlice({
     homePageProducts: [],
     selectedProduct: null,
     categories: [],
+    categoryProducts: [],
+    singleProduct: {},
   },
   reducers: {
     setSelectedProduct: (state, action) => {
@@ -54,21 +93,30 @@ export const productSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchHomePageProducts.pending, (state) => {
-      state.loading = true;
-    });
+    builder.addCase(fetchHomePageProducts.pending, pendingReducer);
     builder.addCase(fetchHomePageProducts.fulfilled, (state, action) => {
       state.loading = false;
       state.homePageProducts = action.payload.products;
       state.categories = action.payload.categories;
     });
-    builder.addCase(fetchHomePageProducts.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    });
+    builder.addCase(fetchHomePageProducts.rejected, errorReducer);
     builder.addCase(saveProduct.fulfilled, (state) => {
       state.selectedProduct = null;
     });
+
+    builder.addCase(fetchCategoryProducts.pending, pendingReducer);
+    builder.addCase(fetchCategoryProducts.fulfilled, (state, action) => {
+      state.loading = false;
+      state.categoryProducts = action.payload.products;
+    });
+    builder.addCase(fetchCategoryProducts.rejected, errorReducer);
+
+    builder.addCase(fetchSingleProduct.pending, pendingReducer);
+    builder.addCase(fetchSingleProduct.fulfilled, (state, action) => {
+      state.loading = false;
+      state.singleProduct = action.payload.product;
+    });
+    builder.addCase(fetchSingleProduct.rejected, errorReducer);
   },
 });
 

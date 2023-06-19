@@ -6,4 +6,6 @@ export {
   fetchHomePageProducts,
   setSelectedProduct,
   deleteProduct,
+  fetchCategoryProducts,
+  fetchSingleProduct,
 } from "./ProductSlice";
