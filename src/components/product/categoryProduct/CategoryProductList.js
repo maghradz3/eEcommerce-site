@@ -46,7 +46,7 @@ export const CategoryProductList = () => {
             return <ProductCard key={product._id} product={product} />;
           })}
         </GridContainer>
-        <Paginate total={5} page={page} changePage={changePage} />
+        <Paginate total={totalPage} page={page} changePage={changePage} />
       </Container>
     </LoadingWrapper>
   );

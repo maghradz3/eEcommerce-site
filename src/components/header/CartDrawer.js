@@ -50,7 +50,16 @@ export const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
         );
       })}
       <StyledButtonContainer>
-        <Button onClick={() => dispatch(clearCart())}>Clear Cart</Button>
+        <Button
+          onClick={() => {
+            dispatch(clearCart());
+            if (userInfo?._id) {
+              dispatch(saveCart({ cartItems: [], userId: userInfo._id }));
+            }
+          }}
+        >
+          Clear Cart
+        </Button>
         {!!userInfo && (
           <Button
             onClick={() =>
