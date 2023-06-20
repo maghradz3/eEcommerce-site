@@ -21,5 +21,6 @@ export const useFetchData = () => {
   return {
     ...state,
     getData,
+    setState,
   };
 };

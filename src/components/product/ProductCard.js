@@ -38,11 +38,7 @@ export const ProductCard = ({ product }) => {
           </StyledInfoContainer>
         </Link>
         <CardActions>
-          <ProductCardActions
-            userInfo={userInfo}
-            product={product}
-            cartItems={cartItems}
-          />
+          <ProductCardActions userInfo={userInfo} product={product} />
         </CardActions>
       </Card>
     </Grid>

@@ -2,6 +2,8 @@ import React from "react";
 
 import { styled, Box } from "@mui/material";
 import { Text } from "../../atoms";
+import { ProductCardActions } from "../ProductCardActions";
+import { useCart, useUser } from "../../../hooks";
 
 const StyledContainer = styled(Box)(() => ({
   width: "100%",
@@ -27,6 +29,8 @@ const StyledDescription = styled("div")(() => ({
 
 export const SingleProductCard = ({ product }) => {
   const { image, name, brand, description } = product;
+  const { cartItems } = useCart();
+  const { userInfo } = useUser();
   console.log(product);
   return (
     <StyledContainer>
@@ -56,6 +60,11 @@ export const SingleProductCard = ({ product }) => {
             {description}
           </Text>
         </StyledDescription>
+        <ProductCardActions
+          userInfo={userInfo}
+          product={product}
+          cartItems={cartItems}
+        />
       </Box>
     </StyledContainer>
   );

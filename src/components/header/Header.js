@@ -1,8 +1,13 @@
 import styled from "@emotion/styled";
 import { AppBar, Box, Toolbar } from "@mui/material";
 import { UserIcon } from "./UserIcon";
-import { Link } from "react-router-dom";
 import { ProductCategories } from "./ProductCategories";
+import { Button, Link } from "../atoms";
+import { LuHome } from "react-icons/lu";
+import { BsCartPlus } from "react-icons/bs";
+import { useState } from "react";
+import { CartDrawer } from "./CartDrawer";
+import { SearchBar } from "./SearchBar";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgorundColor: "red",
@@ -18,17 +23,27 @@ const StyledToolBar = styled(Toolbar)(() => ({
 }));
 
 export const Header = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
   return (
     <Box>
       <StyledAppBar>
         <StyledToolBar>
-          <Link to="/">Home</Link>
+          <Link to="/">
+            <LuHome size={40} color={"wheat"} />
+          </Link>
+          <SearchBar />
           <Box sx={{ display: "flex" }}>
-            <UserIcon />
+            <Button onClick={() => setIsCartOpen(true)}>
+              <BsCartPlus size={40} color={"wheat"} />
+            </Button>
+            <Box sx={{ display: "flex" }}>
+              <UserIcon />
+            </Box>
           </Box>
         </StyledToolBar>
         <ProductCategories />
       </StyledAppBar>
+      <CartDrawer isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
     </Box>
   );
 };

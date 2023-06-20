@@ -14,7 +14,7 @@ import {
 import { Box } from "@mui/material";
 import { useCart } from "../../hooks";
 
-export const ProductCardActions = ({ userInfo, product, cartItems }) => {
+export const ProductCardActions = ({ cartItems, userInfo, product }) => {
   const { name, _id } = product;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ export const ProductCardActions = ({ userInfo, product, cartItems }) => {
       </>
     );
   }
-  const productInCart = cartItems.find((item) => item.product._id === _id);
+  const productInCart = cartItems?.find((item) => item.product._id === _id);
   return (
     <Box>
       {productInCart ? (

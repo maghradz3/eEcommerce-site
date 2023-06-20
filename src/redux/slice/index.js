@@ -9,4 +9,11 @@ export {
   fetchSingleProduct,
 } from "./ProductSlice";
 
-export { cartReducer, addToCart, removeFormCart } from "./cartSlice";
+export {
+  cartReducer,
+  addToCart,
+  removeFormCart,
+  clearCart,
+  saveCart,
+  fetchCart,
+} from "./cartSlice";
