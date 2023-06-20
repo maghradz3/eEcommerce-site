@@ -3,7 +3,7 @@ import React from "react";
 import { styled, Grid, Card, Box, CardActions } from "@mui/material";
 import { Link, Text } from "../atoms";
 import { ProductCardActions } from "./ProductCardActions";
-import { useUser } from "../../hooks";
+import { useCart, useUser } from "../../hooks";
 
 const StyledImage = styled("img")(() => ({
   objectFit: "cover",
@@ -21,6 +21,7 @@ const StyledInfoContainer = styled(Box)(() => ({
 export const ProductCard = ({ product }) => {
   const { name, image, category, price, _id } = product;
   const { userInfo } = useUser();
+  const { cartItems } = useCart();
   console.log(product);
   return (
     <Grid item xs={12} sm={12} md={4} lg={3}>
@@ -37,7 +38,11 @@ export const ProductCard = ({ product }) => {
           </StyledInfoContainer>
         </Link>
         <CardActions>
-          <ProductCardActions userInfo={userInfo} product={product} />
+          <ProductCardActions
+            userInfo={userInfo}
+            product={product}
+            cartItems={cartItems}
+          />
         </CardActions>
       </Card>
     </Grid>
