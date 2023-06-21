@@ -1,0 +1,37 @@
+.FooterCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.BoxCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px
+}
+
+
+.SocIcons {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    color: rgb(119, 119, 119);
+
+}
+
+
+
+.SocIcons:nth-child(1):hover {
+    color: rgb(21, 92, 224);
+    transform: scale(1.1);
+
+}
+
+
+
+.SocIcons:nth-child(3):hover {
+    color: rgb(21, 92, 224);
+    transform: scale(1.1);
+}

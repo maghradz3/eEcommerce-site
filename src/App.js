@@ -24,9 +24,8 @@ const App = () => {
   }, [userInfo]);
   return (
     <Grid sx={{ minHeight: "100vh" }}>
-      <Grid item>
-        <Header />
-      </Grid>
+      <Header />
+      <Grid item></Grid>
 
       <Grid
         item
@@ -39,8 +38,8 @@ const App = () => {
         }}
       >
         <RouteComponent />
-        <Footer />
       </Grid>
+      <Footer />
     </Grid>
   );
 };
