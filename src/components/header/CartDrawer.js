@@ -9,7 +9,6 @@ const StyledCartItem = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   padding: "5px 10px",
-  marginBottom: 20,
 }));
 
 const StyledButtonContainer = styled(Box)(() => ({

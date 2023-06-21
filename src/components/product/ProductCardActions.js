@@ -4,6 +4,7 @@ import { Button } from "../atoms";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { Text } from "../atoms";
+import classes from "./ProductCardActions.module.css";
 
 import {
   addToCart,
@@ -37,21 +38,25 @@ export const ProductCardActions = ({ userInfo, product }) => {
   }
   const productInCart = cartItems?.find((item) => item.product._id === _id);
   return (
-    <Box>
+    <Box className={classes.CardBox}>
       {productInCart ? (
         <Box
           sx={{
             display: "flex",
+            gap: "20px",
             justifyContent: "space-between",
             alignItems: "center",
           }}
         >
           <Button onClick={() => dispatch(removeFormCart(_id))}>-</Button>
-          <Text>{productInCart?.quantity}</Text>
+          <Text sx={{ color: "orange" }}>{productInCart?.quantity}</Text>
           <Button onClick={() => dispatch(addToCart({ product }))}>+</Button>
         </Box>
       ) : (
-        <Button onClick={() => dispatch(addToCart({ product }))}>
+        <Button
+          className={classes.CardButton}
+          onClick={() => dispatch(addToCart({ product }))}
+        >
           Add To Cart
         </Button>
       )}

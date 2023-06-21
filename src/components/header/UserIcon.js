@@ -6,6 +6,7 @@ import { useUser } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../redux";
 import { getUserInitials, isUserAdmin } from "../../helper";
+import classes from "./UserIcon.module.css";
 
 const StyledBox = styled(Box)(() => ({
   display: "flex",
@@ -23,7 +24,7 @@ export const UserIcon = () => {
   return (
     <Box>
       <IconButton onClick={(e) => setAnchor(e.currentTarget)}>
-        <Avatar>{getUserInitials(userInfo)}</Avatar>
+        <Avatar className={classes.Avatar}>{getUserInitials(userInfo)}</Avatar>
       </IconButton>
       <Menu
         anchorEl={anchor}
@@ -36,10 +37,10 @@ export const UserIcon = () => {
         <StyledBox>
           {!userInfo ? (
             <>
-              <MenuItem>
+              <MenuItem className={classes.MenuItem}>
                 <Button onClick={() => navigate("/login")}>Log In</Button>
               </MenuItem>
-              <MenuItem>
+              <MenuItem className={classes.MenuItem}>
                 <Button onClick={() => navigate("/register")}>Sign Up</Button>
               </MenuItem>
             </>

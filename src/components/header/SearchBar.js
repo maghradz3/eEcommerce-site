@@ -2,6 +2,7 @@ import { Autocomplete, Box, TextField } from "@mui/material";
 import { Link, Loading, Text } from "../atoms";
 import { useEffect, useState } from "react";
 import { useFetchData } from "../../hooks/useFetchData";
+import classes from "./SearchBar.module.css";
 
 export const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -24,7 +25,20 @@ export const SearchBar = () => {
   return (
     <Autocomplete
       freeSolo
-      sx={{ width: 300 }}
+      className={classes.searchInput}
+      sx={{
+        "& .MuiOutlinedInput-root": {
+          "& fieldset": {
+            borderColor: "orange",
+          },
+          "&:hover fieldset": {
+            borderColor: "orange",
+          },
+          "&:not(:hover) fieldset": {
+            borderColor: "orange",
+          },
+        },
+      }}
       disableClearable
       loading={loading}
       loadingText={<Loading size={50} />}

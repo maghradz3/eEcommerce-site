@@ -1,0 +1,34 @@
+.CardButton {
+    color: rgb(241, 135, 49);
+    z-index: 2;
+
+}
+
+.CardBox {
+    display: flex;
+    align-self: flex-end;
+    width: 100%;
+    position: relative;
+    padding: 0 32%;
+
+}
+
+
+.CardButton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(250, 191, 119);
+    z-index: -2;
+    border-radius: 8px;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out;
+}
+
+.CardButton:hover::after {
+    transform: scaleY(1);
+    transform-origin: bottom;
+}

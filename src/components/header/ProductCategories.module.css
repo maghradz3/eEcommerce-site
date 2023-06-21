@@ -1,0 +1,37 @@
+.TextStyle {
+    color: orange;
+    transition: 0.3s ease-in-out;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.TextStyle:hover {
+    background-color: orange;
+    color: black;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+    animation: moveUpText 0.8s ease-in-out;
+
+}
+
+
+@keyframes moveUpText {
+    0% {
+        transform: translateY(0px);
+    }
+
+    25% {
+        transform: translateY(-10px);
+    }
+
+    50% {
+        transform: translateY(0px);
+    }
+
+    75% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}

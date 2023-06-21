@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Alert, FormContainer, Input } from "../atoms";
 import { useAlert, useForm } from "../../hooks";
 import { generateRegisterFormValues } from "./generateRegisterFormValues";
@@ -11,10 +11,10 @@ export const RegisterForm = () => {
   const {
     formValues: registerFormValues,
     onFormChange,
-    checkButtonDisabled,
+    isButtonDisabled,
   } = useForm(generateRegisterFormValues());
   const { showAlert, alertState, handleClose } = useAlert();
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  // const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const onSubmit = () => {
@@ -37,10 +37,6 @@ export const RegisterForm = () => {
       });
   };
 
-  useEffect(() => {
-    setIsButtonDisabled(checkButtonDisabled(registerFormValues));
-  }, [registerFormValues]);
-  // console.log(registerFormValues);
   return (
     <FormContainer>
       <Input

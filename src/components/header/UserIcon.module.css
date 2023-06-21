@@ -1,0 +1,38 @@
+.Avatar {
+
+
+    border: 2px solid rgb(245, 110, 0);
+    background-color: rgb(247, 114, 6);
+    color: wheat;
+    transition: 0.3s ease-in-out;
+}
+
+.Avatar:hover {
+    background: rgb(124, 124, 124);
+    color: wheat
+}
+
+
+.MenuItem {
+    position: relative;
+}
+
+.MenuItem::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgb(248, 151, 71);
+
+    height: 100%;
+    width: 100%;
+    transform-origin: Bottom;
+    transform: scaleY(0);
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.MenuItem:hover::before {
+    transform: scaleY(1);
+    transform-origin: Top;
+
+}

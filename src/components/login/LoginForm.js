@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Alert, Button, FormContainer, Input } from "../atoms";
 import { generateLoginFormValues } from "./generateLoginFormValues";
 import { useAlert, useForm } from "../../hooks";
@@ -10,11 +10,11 @@ export const LoginForm = () => {
   const {
     formValues: loginFormValues,
     onFormChange: onLoginFormChange,
-    checkButtonDisabled,
+    isButtonDisabled,
   } = useForm(generateLoginFormValues());
 
   const { showAlert, alertState, handleClose } = useAlert();
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  // const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,13 +33,13 @@ export const LoginForm = () => {
       })
       .catch((error) => {
         showAlert("error", error);
+        console.log(error);
       });
-    console.log(email, password);
   };
 
-  useEffect(() => {
-    setIsButtonDisabled(checkButtonDisabled(loginFormValues));
-  }, [loginFormValues]);
+  // useEffect(() => {
+  //   setIsButtonDisabled(checkButtonDisabled(loginFormValues));
+  // }, [loginFormValues]);
   return (
     <FormContainer>
       <Input
@@ -56,7 +56,9 @@ export const LoginForm = () => {
         error={loginFormValues.password.error}
         onChange={onLoginFormChange}
       />
-      <Button onClick={onLogin}>login</Button>
+      <Button onClick={onLogin} disabled={isButtonDisabled}>
+        login
+      </Button>
       <Alert {...alertState} handleClose={handleClose} />
     </FormContainer>
   );

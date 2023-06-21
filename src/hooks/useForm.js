@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useForm = (defaultFormValues) => {
   const [formValues, setFormValues] = useState(defaultFormValues);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const onFormChange = (e) => {
     const { name, value } = e.target;
     const { validateInput } = formValues[name];
@@ -16,6 +17,10 @@ export const useForm = (defaultFormValues) => {
       };
     });
   };
+
+  useEffect(() => {
+    setIsButtonDisabled(checkButtonDisabled(formValues));
+  }, [formValues]);
 
   const clearForm = (data) => {
     setFormValues(data);
@@ -35,5 +40,6 @@ export const useForm = (defaultFormValues) => {
     clearForm,
     checkButtonDisabled,
     setFormValues,
+    isButtonDisabled,
   };
 };

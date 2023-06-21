@@ -1,0 +1,22 @@
+.CardText {
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.CardText span {
+    color: rgb(87, 86, 86);
+}
+
+.Card {
+    transition: 0.4s ease-in-out;
+}
+
+.Card:hover {
+
+    border: 1px solid orange;
+}
+
+.ProductCardAction {
+    margin: 0 auto;
+}

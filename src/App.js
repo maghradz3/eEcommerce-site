@@ -1,12 +1,13 @@
 import "./App.css";
 import { RouteComponent } from "./Routes";
 import { Link } from "react-router-dom";
-import { Header } from "./components/header";
+import { Header } from "./components/header/Header";
 import { Grid } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchCart, fetchHomePageProducts } from "./redux";
 import { useUser } from "./hooks";
+import { Footer } from "./components/footer";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const App = () => {
       <Grid item>
         <Header />
       </Grid>
-      <Link to="/product/new">Add Product</Link>
+
       <Grid
         item
         sx={{
@@ -38,6 +39,7 @@ const App = () => {
         }}
       >
         <RouteComponent />
+        <Footer />
       </Grid>
     </Grid>
   );

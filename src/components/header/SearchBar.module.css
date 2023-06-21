@@ -1,0 +1,10 @@
+.searchInput {
+    width: 30%;
+    border: 1px #FF9900;
+    border-radius: 8px;
+    transition: 0.5s ease-in-out;
+}
+
+.searchInput:hover {
+    width: 40%;
+}

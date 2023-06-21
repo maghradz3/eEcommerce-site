@@ -2,6 +2,7 @@ import React from "react";
 import { useProduct } from "../../hooks";
 import { ListItem, styled, List } from "@mui/material";
 import { Link, Text } from "../atoms";
+import classes from "./ProductCategories.module.css";
 
 const StyledListItem = styled(ListItem)(() => ({
   padding: "5px 8px 3px 15px",
@@ -17,7 +18,7 @@ export const ProductCategories = () => {
         return (
           <Link to={`/products/categories/${name}?page=1&sort=price,asc`}>
             <StyledListItem key={_id}>
-              <Text color="black">{name}</Text>
+              <Text className={classes.TextStyle}>{name}</Text>
             </StyledListItem>
           </Link>
         );

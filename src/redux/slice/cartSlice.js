@@ -3,7 +3,7 @@ import { axiosInstance } from "../../helper";
 
 export const fetchCart = createAsyncThunk(
   "cart/fetchCart",
-  async ({ userId }, { rejectWithValue, dispatch }) => {
+  async ({ userId }, { rejectWithValue }) => {
     try {
       const { data } = await axiosInstance.get(`/users/${userId}/cart`);
       return data;

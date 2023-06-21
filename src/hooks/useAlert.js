@@ -15,7 +15,7 @@ export const useAlert = () => {
     }));
   };
 
-  const showAlert = (severity, message) => {
+  const showAlert = (severity, { message }) => {
     setAlertState({
       open: true,
       severity,

@@ -1,0 +1,58 @@
+.HeaderCont {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #333333;
+
+    animation: moveUpHeader 0.7s ease-in-out;
+
+
+
+}
+
+
+.LogoImage:hover {
+    animation: HeartEffect 0.8s ease-in-out infinite
+}
+
+
+
+@keyframes HeartEffect {
+    0% {
+        transform: scale(1);
+    }
+
+    70% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+@keyframes moveUpHeader {
+    0% {
+        transform: translateY(200px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+}
+
+.CartIcon {
+    color: rgb(250, 140, 14);
+    transition: 0.3s ease-in-out;
+    padding: 3px;
+    border-radius: 5px
+}
+
+.CartIcon:hover {
+    background-color: rgb(250, 140, 14);
+    color: black;
+}

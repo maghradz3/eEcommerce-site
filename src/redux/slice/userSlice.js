@@ -23,6 +23,7 @@ const userSlice = createSlice({
     userInfo: null,
     loading: false,
     error: null,
+    products: [],
   },
   reducers: {
     logoutUser: (state, action) => {
@@ -41,6 +42,7 @@ const userSlice = createSlice({
     });
     builder.addCase(authenticatedUser.rejected, (state, action) => {
       state.loading = false;
+      // state.error = action.payload;
     });
   },
 });
