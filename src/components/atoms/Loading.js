@@ -8,6 +8,7 @@ export const Loading = ({ size = 100, color = "secondary" }) => {
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
+        marginTop: "180px",
       }}
     >
       <CircularProgress size={size} color={color} />

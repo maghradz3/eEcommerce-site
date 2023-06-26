@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveProduct, setSelectedProduct } from "../../../redux";
 import { useNavigate } from "react-router";
+import classes from "./ProductForm.module.css";
 
 export const ProductForm = () => {
   const [image, setImage] = useState("");
@@ -44,7 +45,7 @@ export const ProductForm = () => {
       });
   };
   return (
-    <FormContainer>
+    <div className={classes.frame}>
       <Input
         name="name"
         value={productFormValues.name.value}
@@ -89,6 +90,6 @@ export const ProductForm = () => {
         }}
       />
       <Button onClick={onSaveProduct}>Save Product</Button>
-    </FormContainer>
+    </div>
   );
 };

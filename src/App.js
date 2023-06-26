@@ -2,12 +2,21 @@ import "./App.css";
 import { RouteComponent } from "./Routes";
 import { Link } from "react-router-dom";
 import { Header } from "./components/header/Header";
-import { Grid } from "@mui/material";
+import { Grid, styled } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchCart, fetchHomePageProducts } from "./redux";
 import { useUser } from "./hooks";
 import { Footer } from "./components/footer";
+
+const StyledGrid = styled(Grid)(() => ({
+  paddingTop: "300px",
+  minHeight: "100vh",
+  width: "100%",
+  paddingBottom: "100px",
+
+  backgroundColor: "#f5f5f5",
+}));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,18 +36,9 @@ const App = () => {
       <Header />
       <Grid item></Grid>
 
-      <Grid
-        item
-        sx={{
-          paddingTop: 20,
-          minHeight: "100vh",
-          width: "100%",
-          pb: 10,
-          backgroundColor: "#f5f5f5",
-        }}
-      >
+      <StyledGrid item>
         <RouteComponent />
-      </Grid>
+      </StyledGrid>
       <Footer />
     </Grid>
   );

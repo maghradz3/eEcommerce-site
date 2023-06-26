@@ -31,7 +31,9 @@ export const fetchHomePageProducts = createAsyncThunk(
   "product/fetchHomePageProducts",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axiosInstance.get("/products");
+      const { data } = await axiosInstance.get(
+        "/products?page=1&sort=price,asc"
+      );
 
       return data;
     } catch (error) {

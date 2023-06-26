@@ -18,9 +18,23 @@ export const Input = ({
       value={value}
       error={Boolean(error)}
       helperText={error}
+      InputLabelProps={{
+        style: { color: "orange" },
+      }}
       sx={{
         marginTop: 2,
         "& fieldset": { borderRadius: "20px" },
+        "& .MuiOutlinedInput-root": {
+          "& fieldset": {
+            borderColor: "orange",
+          },
+          "&:hover fieldset": {
+            borderColor: "orange",
+          },
+          "&:not(:hover) fieldset": {
+            borderColor: "rgb(235, 171, 98)",
+          },
+        },
       }}
     />
   );

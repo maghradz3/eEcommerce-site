@@ -14,12 +14,21 @@ const FooterContainer = styled("footer")(({ theme }) => ({
 
   borderTopLeftRadius: "8px",
   borderTopRightRadius: "8px",
+
+  "@media only screen and (max-width: 550px)": {
+    padding: "25px 30px",
+  },
 }));
 const StyledImg = styled("img")(() => ({
   objectFit: "cover",
   objectPosition: "center",
   width: "120px",
   height: "120px",
+
+  "@media only screen and (max-width: 650px)": {
+    width: "90px",
+    height: "90px",
+  },
 }));
 
 export const Footer = () => {
@@ -36,13 +45,13 @@ export const Footer = () => {
           <a href="https://www.facebook.com/Maghradz3ee/" target="blank">
             <BsFacebook className={classes.SocIcons} />
           </a>
+          <a href="https://github.com/maghradz3" target="blank">
+            <BsGithub className={classes.SocIcons} />
+          </a>
           <a
             href="https://www.linkedin.com/in/levan-maghradze-203a21253/"
             target="blank"
           >
-            <BsGithub className={classes.SocIcons} />
-          </a>
-          <a href="https://github.com/maghradz3" target="blank">
             <TiSocialLinkedin className={classes.SocIcons} />
           </a>
         </Box>

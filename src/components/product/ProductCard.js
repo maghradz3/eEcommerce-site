@@ -24,7 +24,7 @@ export const ProductCard = ({ product }) => {
   const { name, image, category, price, _id } = product;
   const { userInfo } = useUser();
   const { cartItems } = useCart();
-  console.log(product);
+
   return (
     <Grid item xs={12} sm={12} md={4} lg={3}>
       <Card className={classes.Card} sx={{ borderRadius: 8 }}>

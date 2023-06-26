@@ -1,0 +1,67 @@
+.CardActions {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+
+}
+
+.MainContainer {
+    position: relative;
+}
+
+.MainContainer::before {
+    content: "";
+    position: absolute;
+
+    width: 100%;
+    height: 2px;
+    top: -5px;
+    background-color: rgb(235, 181, 65);
+    transform: scale(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+}
+
+.MainContainer:hover::before {
+    transform: scale(1);
+    transform-origin: right;
+}
+
+.MainContainer::after {
+    content: "";
+    position: absolute;
+
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(235, 181, 65);
+    transform: scale(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.MainContainer:hover::after {
+    transform: scale(1);
+    transform-origin: left;
+}
+
+.Text {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.arrowButtons {
+    background: transparent;
+    color: rgb(255, 153, 37);
+}
+
+
+@media screen and (max-width: 600px) {
+    .Text {
+        font-size: 0.7rem;
+    }
+
+    .CardActions {
+        padding: 10px;
+    }
+}

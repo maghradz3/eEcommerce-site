@@ -15,6 +15,11 @@ const StyledBox = styled(Box)(() => ({
   borderRadius: 10,
 }));
 
+const StyledIconButton = styled(IconButton)(() => ({
+  width: "20px",
+  height: "20px",
+}));
+
 export const UserIcon = () => {
   const [anchor, setAnchor] = useState(null);
   const navigate = useNavigate();

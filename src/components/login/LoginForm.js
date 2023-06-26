@@ -5,6 +5,7 @@ import { useAlert, useForm } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { authenticatedUser } from "../../redux";
 import { useNavigate } from "react-router";
+import classes from "./LoginForm.module.css";
 
 export const LoginForm = () => {
   const {
@@ -41,7 +42,7 @@ export const LoginForm = () => {
   //   setIsButtonDisabled(checkButtonDisabled(loginFormValues));
   // }, [loginFormValues]);
   return (
-    <FormContainer>
+    <div className={classes.frame}>
       <Input
         name="email"
         label="email"
@@ -60,6 +61,6 @@ export const LoginForm = () => {
         login
       </Button>
       <Alert {...alertState} handleClose={handleClose} />
-    </FormContainer>
+    </div>
   );
 };

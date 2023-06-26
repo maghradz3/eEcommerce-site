@@ -4,27 +4,55 @@ import { styled, Box } from "@mui/material";
 import { Text } from "../../atoms";
 import { ProductCardActions } from "../ProductCardActions";
 import { useCart, useUser } from "../../../hooks";
+import classes from "./SingleProductCard.module.css";
+import { BiQr } from "react-icons/bi";
 
 const StyledContainer = styled(Box)(() => ({
-  width: "100%",
+  border: "1px solid rgb(238,153,74)",
+  width: "60%",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  margin: "20px 30px",
+  // margin: "20px 30px",
+  padding: "30px",
+  margin: "0 auto",
+
+  "@media only screen and (max-width: 868px)": {
+    padding: "10px",
+    width: "90%",
+  },
+}));
+
+const StyledImageBox = styled(Box)(() => ({
+  width: "70%",
+  height: "350px",
+  borderRadius: "8px",
+  overflow: "hidden",
+
+  "@media only screen and (max-width: 598px)": {
+    height: "270px",
+    width: "95%",
+  },
 }));
 
 const StyledImage = styled("img")(() => ({
-  width: "350px",
-  height: "350px",
+  width: "100%",
+  height: "100%",
+  borderRadius: "8px",
   objectFit: "cover",
+  objectPosition: "center",
+  // overflow: "hidden",
 }));
 
 const StyledDescription = styled("div")(() => ({
   display: "flex",
   alignItems: "center",
 
-  margin: "20px 50px",
+  margin: "20px 0",
+  "@media only screen and (max-width: 598px)": {
+    margin: "10px 0",
+  },
 }));
 
 export const SingleProductCard = ({ product }) => {
@@ -33,30 +61,32 @@ export const SingleProductCard = ({ product }) => {
   const { userInfo } = useUser();
   console.log(product);
   return (
-    <StyledContainer>
-      <StyledImage src={image} />
-      <Box>
+    <StyledContainer className={classes.MainCont}>
+      <StyledImageBox>
+        <StyledImage src={image} className={classes.image} />
+      </StyledImageBox>
+      <Box className={classes.Description}>
         <StyledDescription>
-          <Text variant="h4" fontSize="30px">
+          <Text variant="h4" size={40} className={classes.keyName}>
             Product Name:
           </Text>
-          <Text variant="h4" fontSize="30px">
+          <Text variant="h4" size={20} className={classes.fontSize}>
             {name}
           </Text>
         </StyledDescription>
         <StyledDescription>
-          <Text variant="h4   " fontSize="30px">
+          <Text variant="h4" size={20} className={classes.keyName}>
             Brand:
           </Text>
-          <Text variant="h4" fontSize="30px">
+          <Text variant="h4" size={20} className={classes.fontSize}>
             {brand}
           </Text>
         </StyledDescription>
         <StyledDescription>
-          <Text variant="h4" fontSize="30px">
+          <Text variant="h4" size={20} className={classes.keyName}>
             Description:
           </Text>
-          <Text variant="h4" fontSize="30px">
+          <Text variant="h4" size={20} className={classes.fontSize}>
             {description}
           </Text>
         </StyledDescription>

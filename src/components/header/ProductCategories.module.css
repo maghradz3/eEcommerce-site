@@ -35,3 +35,11 @@
         transform: translateY(0px);
     }
 }
+
+
+@media only screen and (max-width: 600px) {
+    .TextStyle {
+        font-size: 0.8rem;
+
+    }
+}

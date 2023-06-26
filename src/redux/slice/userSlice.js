@@ -12,6 +12,7 @@ export const authenticatedUser = createAsyncThunk(
       console.log(data.user);
       return data;
     } catch (error) {
+      console.log(error);
       return rejectWithValue(error?.response?.data?.message);
     }
   }
@@ -42,7 +43,7 @@ const userSlice = createSlice({
     });
     builder.addCase(authenticatedUser.rejected, (state, action) => {
       state.loading = false;
-      // state.error = action.payload;
+      state.error = action.payload;
     });
   },
 });

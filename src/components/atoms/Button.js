@@ -1,5 +1,6 @@
 import React from "react";
 import { Button as MUIButton, createTheme, ThemeProvider } from "@mui/material";
+import styled from "@emotion/styled";
 
 const theme = createTheme({
   components: {
@@ -7,6 +8,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: "orange",
+
           "&:hover": {
             color: "black",
             "& .MuiTouchRipple-root": {
@@ -19,12 +21,14 @@ const theme = createTheme({
   },
 });
 
+const StyledMuiButton = styled(MUIButton)(() => ({}));
+
 export const Button = ({ children, onClick, ...rest }) => {
   return (
     <ThemeProvider theme={theme}>
-      <MUIButton onClick={onClick} {...rest}>
+      <StyledMuiButton onClick={onClick} {...rest}>
         {children}
-      </MUIButton>
+      </StyledMuiButton>
     </ThemeProvider>
   );
 };

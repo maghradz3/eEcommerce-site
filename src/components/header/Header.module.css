@@ -11,7 +11,7 @@
 
 
 .LogoImage:hover {
-    animation: HeartEffect 0.8s ease-in-out infinite
+    animation: rotate-scale-up 0.8s ease-in-out infinite
 }
 
 
@@ -49,10 +49,20 @@
     color: rgb(250, 140, 14);
     transition: 0.3s ease-in-out;
     padding: 3px;
-    border-radius: 5px
+    border-radius: 5px;
+    width: 45px;
+    height: 45px;
 }
 
 .CartIcon:hover {
     background-color: rgb(250, 140, 14);
     color: black;
+}
+
+
+@media screen and (max-width: 550px) {
+    .CartIcon {
+        width: 35px;
+        height: 35px;
+    }
 }

@@ -6,6 +6,7 @@ import { Button } from "../atoms";
 import { useDispatch } from "react-redux";
 import { authenticatedUser } from "../../redux";
 import { useNavigate } from "react-router";
+import classes from "./RegisterForm.module.css";
 
 export const RegisterForm = () => {
   const {
@@ -38,7 +39,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <FormContainer>
+    <div className={classes.frame}>
       <Input
         name="firstName"
         label="firstName"
@@ -71,6 +72,6 @@ export const RegisterForm = () => {
         register
       </Button>
       <Alert {...alertState} handleClose={handleClose} />
-    </FormContainer>
+    </div>
   );
 };

@@ -1,14 +1,26 @@
-import { Box, Button, Drawer, styled } from "@mui/material";
+import { Box, Drawer, styled } from "@mui/material";
 import { useCart, useUser } from "../../hooks";
 import { useDispatch } from "react-redux";
 import { Text } from "../atoms";
 import { clearCart, saveCart } from "../../redux";
+import { Button } from "../atoms";
+import { ProductCardActions } from "../product/ProductCardActions";
+import classes from "./CartDrawer.module.css";
 
 const StyledCartItem = styled(Box)(() => ({
   width: 400,
   display: "flex",
-  alignItems: "center",
-  padding: "5px 10px",
+  alignItems: "flex-start",
+  paddingLeft: "10px",
+  flexDirection: "column",
+
+  "@media only screen and (max-width: 768px)": {
+    width: 350,
+  },
+
+  "@media only screen and (max-width: 568px)": {
+    width: 250,
+  },
 }));
 
 const StyledButtonContainer = styled(Box)(() => ({
@@ -25,6 +37,7 @@ const StyledImage = styled("img")(() => ({
 
 export const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
   const { userInfo } = useUser();
+
   const dispatch = useDispatch();
   const { cartItems } = useCart();
 
@@ -38,13 +51,16 @@ export const CartDrawer = ({ isCartOpen, setIsCartOpen }) => {
         const { product, quantity } = item;
         const { price, name, _id, image } = product;
         return (
-          <StyledCartItem key={_id}>
-            <StyledImage src={image} alt={`${name}-img`} />
-            <Box sx={{ paddingLeft: 5 }}>
-              <Text>{name}</Text>
-              <Text>Quantity:{quantity}</Text>
-              <Text>Total ${price * quantity}</Text>
-            </Box>
+          <StyledCartItem key={_id} className={classes.MainContainer}>
+            <div className={classes.CardActions}>
+              <StyledImage src={image} alt={`${name}-img`} />
+              <Box sx={{ paddingLeft: 5 }}>
+                <h4 className={classes.Text}>{name}</h4>
+                <h4 className={classes.Text}>Quantity:{quantity}</h4>
+                <h4 className={classes.Text}>Total: ${price * quantity}</h4>
+              </Box>
+            </div>
+            <ProductCardActions userInfo={userInfo} product={product} />
           </StyledCartItem>
         );
       })}

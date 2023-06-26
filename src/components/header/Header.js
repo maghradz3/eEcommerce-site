@@ -14,13 +14,22 @@ import logoImg from "../../Images/logo-no-background.png";
 const StyledAppBar = styled(AppBar)(() => ({
   backgroundColor: " #333333",
   padding: "20px 35px 0 30px",
-  position: "relative",
+  // position: "relative",
+  "@media only screen and (max-width: 768px)": {
+    paddingLeft: "10px",
+    paddingRight: "10px",
+  },
 }));
 const StyledImg = styled("img")(() => ({
   objectFit: "cover",
   objectPosition: "center",
   width: "120px",
   height: "120px",
+
+  "@media only screen and (max-width: 768px)": {
+    width: "90px",
+    height: "90px",
+  },
 }));
 
 const StyledToolBar = styled(Toolbar)(() => ({
@@ -38,12 +47,12 @@ export const Header = () => {
       <StyledAppBar className={classes.HeaderCont}>
         <StyledToolBar>
           <Link to="/">
-            <StyledImg className={classes.LogoImage} src={logoImg} />
+            <StyledImg className={classes.atItem} src={logoImg} />
           </Link>
           <SearchBar />
           <Box sx={{ display: "flex" }}>
             <Button onClick={() => setIsCartOpen(true)}>
-              <BsCartPlus className={classes.CartIcon} size={40} />
+              <BsCartPlus className={classes.CartIcon} />
             </Button>
             <Box sx={{ display: "flex" }}>
               <UserIcon />
