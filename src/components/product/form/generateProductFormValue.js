@@ -25,15 +25,15 @@ export const generateProductFormValues = (selectedProduct) => {
           ? null
           : "category should have at least 2 character",
     },
-    brand: selectedProduct?.brand || {
-      value: "",
+    brand: {
+      value: selectedProduct?.brand || "",
       required: true,
       error: "",
       validateInput: (brand) =>
         brand.length > 1 ? null : "brand should have at least 2 character",
     },
-    price: selectedProduct?.price || {
-      value: "",
+    price: {
+      value: selectedProduct?.price || "",
       required: true,
       error: "",
       validateInput: (price) =>

@@ -21,7 +21,7 @@ export const ProductCategories = () => {
 
   const categoriesToShow = categories.slice(
     currentCategory,
-    currentCategory + 3
+    currentCategory + 4
   );
 
   const handleNextCategory = () => {

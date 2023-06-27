@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { saveProduct, setSelectedProduct } from "../../../redux";
 import { useNavigate } from "react-router";
 import classes from "./ProductForm.module.css";
+import { useAlert } from "../../../hooks";
+import { Alert } from "../../atoms";
 
 export const ProductForm = () => {
   const [image, setImage] = useState("");
@@ -18,6 +20,7 @@ export const ProductForm = () => {
   } = useForm(generateProductFormValues());
   const { selectedProduct } = useProduct();
 
+  const { showAlert, alertState, handleClose } = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -42,6 +45,10 @@ export const ProductForm = () => {
       .unwrap()
       .then(() => {
         navigate("/");
+        dispatch(setSelectedProduct(null));
+      })
+      .catch((error) => {
+        showAlert("error", error);
       });
   };
   return (
@@ -90,6 +97,7 @@ export const ProductForm = () => {
         }}
       />
       <Button onClick={onSaveProduct}>Save Product</Button>
+      <Alert {...alertState} handleClose={handleClose} />
     </div>
   );
 };

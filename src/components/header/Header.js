@@ -19,6 +19,11 @@ const StyledAppBar = styled(AppBar)(() => ({
     paddingLeft: "10px",
     paddingRight: "10px",
   },
+
+  "@media only screen and (max-width: 768px)": {
+    paddingLeft: "5px",
+    paddingRight: "5px",
+  },
 }));
 const StyledImg = styled("img")(() => ({
   objectFit: "cover",
@@ -29,6 +34,10 @@ const StyledImg = styled("img")(() => ({
   "@media only screen and (max-width: 768px)": {
     width: "90px",
     height: "90px",
+  },
+  "@media only screen and (max-width: 568px)": {
+    width: "70px",
+    height: "70px",
   },
 }));
 

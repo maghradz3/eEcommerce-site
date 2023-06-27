@@ -11,7 +11,10 @@ export const saveProduct = createAsyncThunk(
       dispatch(fetchHomePageProducts());
       return data;
     } catch (error) {
-      return rejectWithValue("oops");
+      return rejectWithValue(
+        error?.response?.data?.message,
+        "Something went wrong"
+      );
     }
   }
 );
@@ -100,6 +103,10 @@ export const productSlice = createSlice({
       state.singleProduct = action.payload.product;
     });
     builder.addCase(fetchSingleProduct.rejected, errorReducer);
+    builder.addCase(saveProduct.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
   },
 });
 

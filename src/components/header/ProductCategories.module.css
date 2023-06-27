@@ -1,6 +1,7 @@
 .TextStyle {
     color: orange;
     transition: 0.3s ease-in-out;
+
     border-radius: 8px;
     padding: 5px;
 }
