@@ -9,7 +9,7 @@
 .TextStyle:hover {
     background-color: orange;
     color: black;
-    animation: name duration timing-function delay iteration-count direction fill-mode;
+
     animation: moveUpText 0.8s ease-in-out;
 
 }
