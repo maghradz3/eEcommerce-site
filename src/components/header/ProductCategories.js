@@ -10,7 +10,9 @@ const StyledListItem = styled(ListItem)(() => ({
   padding: "5px 8px 3px 15px",
   margin: "0px",
 
-  "@media only screen and (max-width: 550px)": {},
+  "@media only screen and (max-width: 550px)": {
+    padding: "5px 2px 3px 1px",
+  },
 }));
 
 export const ProductCategories = () => {
