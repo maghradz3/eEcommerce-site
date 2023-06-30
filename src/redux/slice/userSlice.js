@@ -5,7 +5,9 @@ export const authenticatedUser = createAsyncThunk(
   "user/authenticatedUser",
   async ({ formValues, isLogin }, { rejectWithValue }) => {
     try {
-      const route = `/users/${isLogin ? "login" : "register"}`;
+      const route = `https://eecommerce-back.onrender.com/users/${
+        isLogin ? "login" : "register"
+      }`;
       const { data } = await axiosInstance.post(route, formValues);
       localStorage.setItem("token", data.token);
       localStorage.setItem("refreshToken", data.refreshToken);

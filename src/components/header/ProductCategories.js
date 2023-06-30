@@ -1,10 +1,10 @@
-import React from "react";
 import { useProduct } from "../../hooks";
 import { ListItem, styled, List } from "@mui/material";
 import { Link, Text } from "../atoms";
 import classes from "./ProductCategories.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../atoms";
+import { useLocation } from "react-router";
 
 const StyledListItem = styled(ListItem)(() => ({
   padding: "5px 8px 3px 15px",
@@ -18,6 +18,11 @@ export const ProductCategories = () => {
   console.log(categories);
 
   const [currentCategory, setCurrentCategory] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location]);
 
   const categoriesToShow = categories.slice(
     currentCategory,
@@ -39,7 +44,6 @@ export const ProductCategories = () => {
   return (
     <List sx={{ display: "flex", margin: "0 auto" }}>
       <Button onClick={handlePreviousCategory} className={classes.arrowButtons}>
-        {" "}
         &lt;
       </Button>
       {categoriesToShow.map((category) => {

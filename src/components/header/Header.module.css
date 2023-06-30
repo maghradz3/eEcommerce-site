@@ -11,7 +11,7 @@
 
 
 .LogoImage:hover {
-    animation: rotate-scale-up 0.8s ease-in-out infinite
+    animation: HeartEffect 0.8s ease-in-out infinite
 }
 
 

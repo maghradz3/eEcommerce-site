@@ -13,7 +13,9 @@ export const SearchBar = () => {
     const timer = setTimeout(() => {
       console.log(searchValue);
       if (searchValue) {
-        getData(`/products/search?name=${searchValue}`);
+        getData(
+          `https://eecommerce-back.onrender.com/products/search?name=${searchValue}`
+        );
       } else {
         setState((prev) => ({ ...prev, data: [] }));
       }

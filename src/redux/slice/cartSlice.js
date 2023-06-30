@@ -5,7 +5,9 @@ export const fetchCart = createAsyncThunk(
   "cart/fetchCart",
   async ({ userId }, { rejectWithValue }) => {
     try {
-      const { data } = await axiosInstance.get(`/users/${userId}/cart`);
+      const { data } = await axiosInstance.get(
+        `https://eecommerce-back.onrender.com/users/${userId}/cart`
+      );
       return data;
     } catch (error) {
       return rejectWithValue("could not fetch data");
@@ -17,9 +19,12 @@ export const saveCart = createAsyncThunk(
   "cart/saveCart",
   async ({ userId, cartItems }, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await axiosInstance.put(`/users/${userId}/cart`, {
-        products: cartItems,
-      });
+      const { data } = await axiosInstance.put(
+        `https://eecommerce-back.onrender.com/users/${userId}/cart`,
+        {
+          products: cartItems,
+        }
+      );
       dispatch(fetchCart({ userId }));
     } catch (error) {
       return rejectWithValue("Could not save the cart");

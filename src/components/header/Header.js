@@ -56,7 +56,7 @@ export const Header = () => {
       <StyledAppBar className={classes.HeaderCont}>
         <StyledToolBar>
           <Link to="/">
-            <StyledImg className={classes.atItem} src={logoImg} />
+            <StyledImg className={classes.LogoImage} src={logoImg} />
           </Link>
           <SearchBar />
           <Box sx={{ display: "flex" }}>
