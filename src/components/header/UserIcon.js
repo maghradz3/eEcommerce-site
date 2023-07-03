@@ -20,7 +20,7 @@ export const UserIcon = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { userInfo } = useUser();
-  console.log(userInfo);
+
   return (
     <Box>
       <IconButton onClick={(e) => setAnchor(e.currentTarget)}>

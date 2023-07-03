@@ -2,7 +2,6 @@ import axios from "axios";
 import env from "react-dotenv";
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
-console.log(backendUrl);
 
 export const axiosInstance = axios.create({
   baseURL: backendUrl,

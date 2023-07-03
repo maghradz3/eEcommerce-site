@@ -11,7 +11,6 @@ export const SearchBar = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log(searchValue);
       if (searchValue) {
         getData(
           `https://eecommerce-back.onrender.com/products/search?name=${searchValue}`

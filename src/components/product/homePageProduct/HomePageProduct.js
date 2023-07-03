@@ -16,8 +16,8 @@ const Container = styled(Box)(() => ({
 }));
 
 export const HomePageProduct = () => {
-  const { homePageProducts, isProductLoading } = useProduct();
-  const { categoryName } = useParams();
+  // const { homePageProducts, isProductLoading } = useProduct();
+  // const { categoryName } = useParams();
   const { value: sort, changeQuery: changeSort } = useQueryParams("sort");
   const { value: page, changeQuery: changePage } = useQueryParams("page");
 
@@ -27,10 +27,8 @@ export const HomePageProduct = () => {
 
   useEffect(() => {
     getData(`/products?size=6&sort=${sort}&page=${page || 1}`);
-    console.log("shemovida");
   }, [page, sort]);
 
-  console.log("page", page);
   useEffect(() => {
     changePage("page", 1);
   }, [sort]);

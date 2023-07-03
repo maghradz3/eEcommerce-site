@@ -17,7 +17,6 @@ const StyledListItem = styled(ListItem)(() => ({
 
 export const ProductCategories = () => {
   const { categories } = useProduct();
-  console.log(categories);
 
   const [currentCategory, setCurrentCategory] = useState(0);
   const location = useLocation();
@@ -51,8 +50,11 @@ export const ProductCategories = () => {
       {categoriesToShow.map((category) => {
         const { _id, name } = category;
         return (
-          <Link to={`/products/categories/${name}?page=1&sort=price,asc`}>
-            <StyledListItem key={_id}>
+          <Link
+            key={_id}
+            to={`/products/categories/${name}?page=1&sort=price,asc`}
+          >
+            <StyledListItem>
               <Text className={classes.TextStyle}>{name}</Text>
             </StyledListItem>
           </Link>
