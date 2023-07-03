@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, FormContainer, Input } from "../atoms";
+import { Alert, Input } from "../atoms";
 import { useAlert, useForm } from "../../hooks";
 import { generateRegisterFormValues } from "./generateRegisterFormValues";
 import { Button } from "../atoms";

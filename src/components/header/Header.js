@@ -15,10 +15,6 @@ const StyledAppBar = styled(AppBar)(() => ({
   backgroundColor: " #333333",
   padding: "20px 35px 0 30px",
   // position: "relative",
-  "@media only screen and (max-width: 768px)": {
-    paddingLeft: "10px",
-    paddingRight: "10px",
-  },
 
   "@media only screen and (max-width: 768px)": {
     paddingLeft: "5px",

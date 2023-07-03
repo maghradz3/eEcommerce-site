@@ -26,11 +26,7 @@ export const HomePageProduct = () => {
   const { products, totalPages } = data;
 
   useEffect(() => {
-    getData(
-      `https://eecommerce-back.onrender.com/products?size=6&sort=${sort}&page=${
-        page || 1
-      }`
-    );
+    getData(`/products?size=6&sort=${sort}&page=${page || 1}`);
     console.log("shemovida");
   }, [page, sort]);
 

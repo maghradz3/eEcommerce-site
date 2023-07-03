@@ -31,7 +31,7 @@ export const CategoryProductList = () => {
 
   useEffect(() => {
     getData(
-      `https://eecommerce-back.onrender.com/products/categories/${categoryName}?size=3&sort=${sort}&page=${page}`
+      `/products/categories/${categoryName}?size=3&sort=${sort}&page=${page}`
     );
   }, [page, categoryName, sort]);
 

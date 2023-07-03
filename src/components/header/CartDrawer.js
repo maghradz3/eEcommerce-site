@@ -1,7 +1,7 @@
 import { Box, Drawer, styled } from "@mui/material";
 import { useCart, useUser } from "../../hooks";
 import { useDispatch } from "react-redux";
-import { Text } from "../atoms";
+
 import { clearCart, saveCart } from "../../redux";
 import { Button } from "../atoms";
 import { ProductCardActions } from "../product/ProductCardActions";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, styled } from "@mui/material";
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Link } from "../atoms";
 import classes from "./Footer.module.css";
 import LogoImg from "../../Images/logo-no-background.png";

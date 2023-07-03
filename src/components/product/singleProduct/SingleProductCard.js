@@ -5,7 +5,6 @@ import { Text } from "../../atoms";
 import { ProductCardActions } from "../ProductCardActions";
 import { useCart, useUser } from "../../../hooks";
 import classes from "./SingleProductCard.module.css";
-import { BiQr } from "react-icons/bi";
 
 const StyledContainer = styled(Box)(() => ({
   border: "1px solid rgb(238,153,74)",

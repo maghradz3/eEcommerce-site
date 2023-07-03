@@ -1,6 +1,6 @@
 import "./App.css";
 import { RouteComponent } from "./Routes";
-import { Link } from "react-router-dom";
+
 import { Header } from "./components/header/Header";
 import { Grid, styled } from "@mui/material";
 import { useDispatch } from "react-redux";

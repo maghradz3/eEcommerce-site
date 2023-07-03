@@ -3,7 +3,7 @@ import React from "react";
 import { styled, Grid, Card, Box, CardActions } from "@mui/material";
 import { Link, Text } from "../atoms";
 import { ProductCardActions } from "./ProductCardActions";
-import { useCart, useUser } from "../../hooks";
+import { useUser } from "../../hooks";
 import classes from "./ProductCard.module.css";
 import { HiCurrencyDollar } from "react-icons/hi";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
@@ -36,10 +36,9 @@ const StyledInfoContainer = styled(Box)(() => ({
 export const ProductCard = ({ product }) => {
   const { name, image, category, price, _id } = product;
   const { userInfo } = useUser();
-  const { cartItems } = useCart();
 
   return (
-    <Grid item xs={12} sm={12} md={4} lg={3}>
+    <Grid item xs={12} sm={12} md={4} lg={3} className={classes.Gridder}>
       <Tilt options={defaultOptions}>
         <Card className={classes.Card} sx={{ borderRadius: 8 }}>
           <Link to={`/products/categories/${category}/${_id}`}>

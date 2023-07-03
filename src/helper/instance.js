@@ -1,7 +1,11 @@
 import axios from "axios";
+import env from "react-dotenv";
+
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+console.log(backendUrl);
 
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:3001/",
+  baseURL: backendUrl,
 });
 
 axiosInstance.interceptors.request.use((req) => {
@@ -23,7 +27,7 @@ axiosInstance.interceptors.response.use(
     ) {
       const refreshToken = localStorage.getItem("refreshToken");
       axios
-        .post("http://localhost3001/users/refresh", {
+        .post("https://eecommerce-back.onrender.com/users/refresh", {
           refresh_token: refreshToken,
         })
         .then(({ data }) => {

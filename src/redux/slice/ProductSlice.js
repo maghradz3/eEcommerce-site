@@ -5,9 +5,7 @@ export const saveProduct = createAsyncThunk(
   "product/saveProduct",
   async ({ product, productId }, { dispatch, rejectWithValue }) => {
     try {
-      const url = productId
-        ? `https://eecommerce-back.onrender.com/products/${productId}`
-        : "https://eecommerce-back.onrender.com/products";
+      const url = productId ? `/products/${productId}` : "/products";
       const method = productId ? "put" : "post";
       const { data } = await axiosInstance[method](url, { product });
       dispatch(fetchHomePageProducts());
@@ -25,9 +23,7 @@ export const deleteProduct = createAsyncThunk(
   "product/deleteProduct",
   async (id, { dispatch }) => {
     try {
-      const { data } = axiosInstance.delete(
-        `https://eecommerce-back.onrender.com/products/${id}`
-      );
+      const { data } = axiosInstance.delete(`/products/${id}`);
       dispatch(fetchHomePageProducts());
       return data;
     } catch (error) {}
@@ -39,7 +35,7 @@ export const fetchHomePageProducts = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axiosInstance.get(
-        "https://eecommerce-back.onrender.com/products?page=1&sort=price,asc"
+        "/products?page=1&sort=price,asc"
       );
 
       return data;
@@ -54,7 +50,7 @@ export const fetchSingleProduct = createAsyncThunk(
   async ({ id, category }, { rejectWithValue }) => {
     try {
       const { data } = await axiosInstance.get(
-        `https://eecommerce-back.onrender.com/products/category/${category}/${id}`
+        `/products/category/${category}/${id}`
       );
       console.log("single product", data);
       return data;
