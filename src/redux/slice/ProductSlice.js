@@ -1,6 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../helper";
 
+export const fetchHomePageProducts = createAsyncThunk(
+  "product/fetchHomePageProducts",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.get(
+        "/products?size=6&sort=price,asc&page=1"
+      );
+
+      return data;
+    } catch (error) {
+      return rejectWithValue("Couldn't fetch products");
+    }
+  }
+);
+
 export const saveProduct = createAsyncThunk(
   "product/saveProduct",
   async ({ product, productId }, { dispatch, rejectWithValue }) => {
@@ -25,23 +40,9 @@ export const deleteProduct = createAsyncThunk(
     try {
       const { data } = axiosInstance.delete(`/products/${id}`);
       dispatch(fetchHomePageProducts());
+
       return data;
     } catch (error) {}
-  }
-);
-
-export const fetchHomePageProducts = createAsyncThunk(
-  "product/fetchHomePageProducts",
-  async (_, { rejectWithValue }) => {
-    try {
-      const { data } = await axiosInstance.get(
-        "/products?page=1&sort=price,asc"
-      );
-
-      return data;
-    } catch (error) {
-      return rejectWithValue("Couldn't fetch products");
-    }
   }
 );
 
@@ -52,7 +53,7 @@ export const fetchSingleProduct = createAsyncThunk(
       const { data } = await axiosInstance.get(
         `/products/category/${category}/${id}`
       );
-      console.log("single product", data);
+
       return data;
     } catch (error) {
       return rejectWithValue("someting went wrong, coludnot fetch product");

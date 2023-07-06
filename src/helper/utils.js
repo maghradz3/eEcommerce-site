@@ -1,5 +1,3 @@
-import imgUser from "../Images/logo-no-background.png";
-import { styled } from "@mui/material";
 import { BiLogInCircle } from "react-icons/bi";
 
 export const isUserAdmin = (user) => {

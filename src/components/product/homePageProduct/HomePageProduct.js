@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useFetchData, useProduct, useQueryParams } from "../../../hooks";
+import { useFetchData, useQueryParams } from "../../../hooks";
 import { GridContainer, LoadingWrapper } from "../../atoms";
 import { ProductCard } from "../ProductCard";
 import { Paginate, Sort } from "../categoryProduct";
-import { useParams } from "react-router";
+
 import { Box, styled } from "@mui/material";
 
 const Container = styled(Box)(() => ({
@@ -16,8 +16,6 @@ const Container = styled(Box)(() => ({
 }));
 
 export const HomePageProduct = () => {
-  // const { homePageProducts, isProductLoading } = useProduct();
-  // const { categoryName } = useParams();
   const { value: sort, changeQuery: changeSort } = useQueryParams("sort");
   const { value: page, changeQuery: changePage } = useQueryParams("page");
 
@@ -26,7 +24,7 @@ export const HomePageProduct = () => {
   const { products, totalPages } = data;
 
   useEffect(() => {
-    getData(`/products?size=6&sort=${sort}&page=${page || 1}`);
+    getData(`/products?size=6&sort=${sort || "price,asc"}&page=${page || 1}`);
   }, [page, sort]);
 
   useEffect(() => {

@@ -5,10 +5,9 @@ import { useProduct } from "../../../hooks";
 import { useDispatch } from "react-redux";
 import { fetchSingleProduct } from "../../../redux";
 import { useParams } from "react-router";
-import { useLocation } from "react-router";
+
 export const SingleProduct = () => {
   const { isProductLoading, singleProduct } = useProduct();
-  console.log(singleProduct);
   const dispatch = useDispatch();
   const { category, id } = useParams();
   console.log(category);

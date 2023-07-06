@@ -13,6 +13,7 @@ export const useFetchData = () => {
       setState((prev) => ({ ...prev, loading: true }));
       const { data } = await axiosInstance.get(url);
       setState((prev) => ({ ...prev, loading: false, data }));
+      console.log("aq shemodis productis fetchi");
     } catch (error) {
       setState((prev) => ({ ...prev, loading: false, error: error?.message }));
     }

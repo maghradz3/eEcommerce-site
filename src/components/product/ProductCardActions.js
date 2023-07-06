@@ -32,7 +32,14 @@ export const ProductCardActions = ({ userInfo, product }) => {
         >
           edit
         </Button>
-        <Button onClick={() => dispatch(deleteProduct(_id))}>delete</Button>
+        <Button
+          onClick={() => {
+            navigate(`/`);
+            dispatch(deleteProduct(_id));
+          }}
+        >
+          delete
+        </Button>
       </>
     );
   }

@@ -58,7 +58,7 @@ export const SingleProductCard = ({ product }) => {
   const { image, name, brand, description } = product;
   const { cartItems } = useCart();
   const { userInfo } = useUser();
-  console.log(product);
+
   return (
     <StyledContainer className={classes.MainCont}>
       <StyledImageBox>
