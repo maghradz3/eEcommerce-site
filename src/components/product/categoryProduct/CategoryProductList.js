@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchCategoryProducts } from "../../../redux";
+
 import { useParams } from "react-router";
 import { GridContainer, LoadingWrapper } from "../../atoms";
-import { useProduct, useQueryParams } from "../../../hooks";
+import {  useQueryParams } from "../../../hooks";
 import { ProductCard } from "../ProductCard";
 import { Box, styled } from "@mui/material";
 import { Paginate } from "./Paginate";

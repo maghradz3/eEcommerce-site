@@ -1,6 +1,8 @@
 import React from "react";
 import { CategoryProductList } from "../components/product/categoryProduct";
 
-export const CategoryProductPage = () => {
+const CategoryProductPage = () => {
   return <CategoryProductList />;
 };
+
+export default CategoryProductPage;

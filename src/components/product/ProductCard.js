@@ -12,6 +12,7 @@ const StyledImage = styled("img")(() => ({
   objectFit: "cover",
   width: "100%",
   height: "270px",
+  maxWidth: "100%",
 }));
 
 const defaultOptions = {
@@ -45,7 +46,7 @@ export const ProductCard = ({ product }) => {
             <StyledImage
               src={image}
               alt={`${category}-${name}`}
-              style={{ objectFit: "cover", width: "100%", height: "270px" }}
+              loading="lazy"
             />
             <StyledInfoContainer>
               <Text className={classes.CardText}>
