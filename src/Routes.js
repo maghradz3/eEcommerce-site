@@ -26,7 +26,7 @@ export const RouteComponent = () => {
       <Route
         path="/"
         element={
-          <Suspense fallback={<div>...Load</div>}>
+          <Suspense fallback={<div>...Loading</div>}>
             <HomePage />
           </Suspense>
         }
@@ -34,7 +34,7 @@ export const RouteComponent = () => {
       <Route
         path="/login"
         element={
-          <Suspense fallback={<div>...sex</div>}>
+          <Suspense fallback={<div>...loading</div>}>
             <LoginPage />
           </Suspense>
         }
@@ -42,7 +42,7 @@ export const RouteComponent = () => {
       <Route
         path="/register"
         element={
-          <Suspense fallback={<div>...kex</div>}>
+          <Suspense fallback={<div>...loading</div>}>
             <RegisterPage />
           </Suspense>
         }
@@ -50,7 +50,7 @@ export const RouteComponent = () => {
       <Route
         path="/products/categories/:categoryName"
         element={
-          <Suspense fallback={<div>...mex</div>}>
+          <Suspense fallback={<div>...loading</div>}>
             <CategoryProductPage />
           </Suspense>
         }
@@ -58,7 +58,7 @@ export const RouteComponent = () => {
       <Route
         path="/products/categories/:categoryName/:id"
         element={
-          <Suspense fallback={<div>...iiii</div>}>
+          <Suspense fallback={<div>...loading</div>}>
             <SingleProductPage />
           </Suspense>
         }
@@ -67,7 +67,7 @@ export const RouteComponent = () => {
         path="/product/new"
         element={
           <ProtectedRoute isAdmin={isUserAdmin(userInfo)}>
-            <Suspense fallback={<div>...aaaa</div>}>
+            <Suspense fallback={<div>...loading</div>}>
               <ProductFormPage />
             </Suspense>
           </ProtectedRoute>
